@@ -111,7 +111,6 @@ def procesar_facturas_pdf():
                     print(f"   -> ⚠️ Pág {num_pag + 1}: No se encontró número de factura válido con 'N°'.")
                     continue
                 
-                # Aquí 'group(1)' extrae solo lo que está entre paréntesis (el número sin el N°)
                 numero_base = match_numero.group(1)
                 letra_factura = "X" 
                 match_letra = REGEX_LETRA.search(texto_pagina[:800])
@@ -128,7 +127,7 @@ def procesar_facturas_pdf():
                     
                 nro_factura = f"FC-{letra_factura}-{numero_base}"
 
-                # --- B. BUSCAR INSTITUCIÓN EN EL TEXTO (MATCH LÓGICO) ---
+                # --- B. BUSCAR INSTITUCIÓN EN EL TEXTO ---
                 abreviatura_encontrada = "DESC" 
                 texto_sin_formatos = texto_pagina.replace('-', '').replace(' ', '')
                 lineas_pdf = texto_pagina.split('\n')
